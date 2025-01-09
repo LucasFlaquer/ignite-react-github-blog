@@ -1,42 +1,45 @@
-import { FaArrowUpRightFromSquare, FaGithub } from 'react-icons/fa6'
+import {
+  FaArrowUpRightFromSquare,
+  FaBuilding,
+  FaGithub,
+  FaUserGroup,
+} from 'react-icons/fa6'
+import { Container, Info } from './styles'
+import { useTheme } from 'styled-components'
 
 export function Profile() {
+  const { colors } = useTheme()
   return (
-    <div>
+    <Container>
       <img src="https://github.com/lucasflaquer.png" alt="" />
       <div>
-        <div>
+        <header>
           <h2>Lucas Flaquer</h2>
           <a href="https://github.com/lucasflaquer">
             github <FaArrowUpRightFromSquare size={12} />
           </a>
-        </div>
+        </header>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit sit
-          quos nostrum.
-          Iusto, quia. Doloribus, ipsa et qui dignissimos quo quas nobis quis
-          nemo
-          aut numquam, obcaecati magni. Harum nisi, qui quae enim omnis
-          temporibus
-          cum quia modi laudantium repellendus id neque sunt iure nihil porro
-          distinctio a ratione laboriosam?
+          Tristique volutpat pulvinar vel massa, pellentesque egestas.
+          Eu viverra massa quam
+          dignissim aenean malesuada suscipit.
         </p>
-        <div>
+        <Info>
           <div>
-            <FaGithub size={18} />
-            lucasflaquer
+            <FaGithub size={18} color={colors['base-label']} />
+            <span>lucas flaquer</span>
           </div>
           <div>
-            <FaGithub size={18} />
-            lucasflaquer
+            <FaBuilding size={18} color={colors['base-label']} />
+            <span>Catho</span>
           </div>
           <div>
-            <FaGithub size={18} />
-            lucasflaquer
+            <FaUserGroup size={18} color={colors['base-label']} />
+            <span>20 seguidores</span>
           </div>
-        </div>
+        </Info>
 
       </div>
-    </div>
+    </Container>
   )
 }
