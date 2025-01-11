@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Container } from './styles'
 import { Profile } from './components/profile'
+import { SearchForm } from './components/search-form'
 
 const Cover = styled.div`
   height: 30%;
@@ -23,6 +24,7 @@ export function Home() {
         <img src="/Logo.svg" alt="Github Blog" />
       </Cover>
       <Profile />
+      <SearchForm />
     </Container>
   )
 }
