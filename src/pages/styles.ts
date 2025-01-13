@@ -5,3 +5,16 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors['base-background']};
   
 `
+export const Cover = styled.div`
+  height: 30%;
+  padding: 4rem;
+  background-image: url('/Cover.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  img {
+    display: block;
+    margin: 0 auto;
+    
+  }
+`
