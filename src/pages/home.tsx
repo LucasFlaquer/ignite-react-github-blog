@@ -4,8 +4,8 @@ import { SearchForm } from './components/search-form'
 import styled from 'styled-components'
 
 export const PostWrapper = styled.div`
-max-width: 864px;
-margin: 0 auto;
+  max-width: 864px;
+  margin: 2rem auto 10rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
@@ -14,7 +14,6 @@ margin: 0 auto;
 export const Post = styled.div`
   padding: 2rem;
   border-radius: 0.5rem;
-  margin-top: 2rem;
   background-color: ${({ theme }) => theme.colors['base-post']};
 
   p {
@@ -32,6 +31,7 @@ export const PostHeader = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 1.125rem;
+  
   h2 {
     font-size: ${({ theme }) => theme.font.size['lg']};
     color: ${({ theme }) => theme.colors['base-title']};

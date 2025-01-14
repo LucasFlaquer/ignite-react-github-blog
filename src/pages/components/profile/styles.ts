@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  margin: -5.65rem auto 0;
+  margin: -3.65rem auto 0;
   padding: 2rem 2.5rem;
   display: flex;
   align-items: center;
