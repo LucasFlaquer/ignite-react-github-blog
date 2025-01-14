@@ -32,7 +32,8 @@ export const Post = styled.div`
   border-radius: 0.5rem;
   background-color: ${({ theme }) => theme.colors['base-post']};
 
-  p {
+  >.content {
+    max-width: 352px;
     display: -webkit-box;
     height: 112px;
     -webkit-line-clamp: 4;

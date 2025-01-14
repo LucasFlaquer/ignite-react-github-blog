@@ -1,8 +1,32 @@
 import { Container, Cover, Post, PostHeader, PostWrapper } from './styles'
 import { Profile } from './components/profile'
 import { SearchForm } from './components/search-form'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
+import Markdown from 'react-markdown'
+
+interface IPost {
+  title: string
+  html_url: string
+  id: number
+  body: string
+  created_at: string
+
+}
 
 export function Home() {
+  const [posts, setPosts] = useState<IPost[]>([])
+  async function fetchPosts() {
+    const response = await axios.get(`${import.meta.env.VITE_GITHUB_SEARCH_URL}/issues?q=Boas%20praticas%20repo:rocketseat-education/reactjs-github-blog-challenge`)
+    setPosts(response.data.items)
+  }
+
+  useEffect(() => {
+    fetchPosts()
+  }, [])
+
   return (
     <Container>
       <Cover>
@@ -11,86 +35,23 @@ export function Home() {
       <Profile />
       <SearchForm />
       <PostWrapper>
-        <Post>
-          <PostHeader>
-            <h2>JavaScript data types and data structures</h2>
-            <span>há 1 dia</span>
-          </PostHeader>
-          <p>
-            Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in JavaScript and what properties they have. These can be used to build other data structures. Wherever possible, comparisons with other languages are drawn.
+        {posts.map(post => (
+          <Post key={post.id}>
+            <PostHeader>
+              <h2>{post.title}</h2>
+              <span>{formatDistanceToNow(post.created_at, {
+                locale: ptBR,
+                addSuffix: true,
 
-            Dynamic typing
-            JavaScript is a loosely typed and dynamic language. Variables in JavaScript are not directly associated with any particular value type, and any variable can be assigned (and re-assigned) values of all types:
+              })}
+              </span>
+            </PostHeader>
+            <Markdown className="content">
+              {post.body}
+            </Markdown>
+          </Post>
 
-            let foo = 42; // foo is now a number
-            foo = 'bar'; // foo is now a string
-            foo = true; // foo is now a boolean
-          </p>
-        </Post>
-        <Post>
-          <PostHeader>
-            <h2>JavaScript data types and data structures</h2>
-            <span>há 1 dia</span>
-          </PostHeader>
-          <p>
-            Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in JavaScript and what properties they have. These can be used to build other data structures. Wherever possible, comparisons with other languages are drawn.
-
-            Dynamic typing
-            JavaScript is a loosely typed and dynamic language. Variables in JavaScript are not directly associated with any particular value type, and any variable can be assigned (and re-assigned) values of all types:
-
-            let foo = 42; // foo is now a number
-            foo = 'bar'; // foo is now a string
-            foo = true; // foo is now a boolean
-          </p>
-        </Post>
-        <Post>
-          <PostHeader>
-            <h2>JavaScript data types and data structures</h2>
-            <span>há 1 dia</span>
-          </PostHeader>
-          <p>
-            Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in JavaScript and what properties they have. These can be used to build other data structures. Wherever possible, comparisons with other languages are drawn.
-
-            Dynamic typing
-            JavaScript is a loosely typed and dynamic language. Variables in JavaScript are not directly associated with any particular value type, and any variable can be assigned (and re-assigned) values of all types:
-
-            let foo = 42; // foo is now a number
-            foo = 'bar'; // foo is now a string
-            foo = true; // foo is now a boolean
-          </p>
-        </Post>
-        <Post>
-          <PostHeader>
-            <h2>JavaScript data types and data structures</h2>
-            <span>há 1 dia</span>
-          </PostHeader>
-          <p>
-            Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in JavaScript and what properties they have. These can be used to build other data structures. Wherever possible, comparisons with other languages are drawn.
-
-            Dynamic typing
-            JavaScript is a loosely typed and dynamic language. Variables in JavaScript are not directly associated with any particular value type, and any variable can be assigned (and re-assigned) values of all types:
-
-            let foo = 42; // foo is now a number
-            foo = 'bar'; // foo is now a string
-            foo = true; // foo is now a boolean
-          </p>
-        </Post>
-        <Post>
-          <PostHeader>
-            <h2>JavaScript data types and data structures</h2>
-            <span>há 1 dia</span>
-          </PostHeader>
-          <p>
-            Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in JavaScript and what properties they have. These can be used to build other data structures. Wherever possible, comparisons with other languages are drawn.
-
-            Dynamic typing
-            JavaScript is a loosely typed and dynamic language. Variables in JavaScript are not directly associated with any particular value type, and any variable can be assigned (and re-assigned) values of all types:
-
-            let foo = 42; // foo is now a number
-            foo = 'bar'; // foo is now a string
-            foo = true; // foo is now a boolean
-          </p>
-        </Post>
+        ))}
       </PostWrapper>
     </Container>
   )

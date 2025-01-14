@@ -16,6 +16,10 @@ export const Container = styled.div`
     border-radius: 8px;
   }
 
+  >div {
+    width: 100%;
+  }
+
   header {
     display: flex;
     justify-content: space-between;
