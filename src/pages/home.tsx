@@ -1,44 +1,6 @@
-import { Container, Cover } from './styles'
+import { Container, Cover, Post, PostHeader, PostWrapper } from './styles'
 import { Profile } from './components/profile'
 import { SearchForm } from './components/search-form'
-import styled from 'styled-components'
-
-export const PostWrapper = styled.div`
-  max-width: 864px;
-  margin: 2rem auto 10rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-`
-
-export const Post = styled.div`
-  padding: 2rem;
-  border-radius: 0.5rem;
-  background-color: ${({ theme }) => theme.colors['base-post']};
-
-  p {
-    display: -webkit-box;
-    height: 112px;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    font-size: ${({ theme }) => theme.font.size['lg']};
-    line-height: 160%;
-  }
-`
-export const PostHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1.125rem;
-  
-  h2 {
-    font-size: ${({ theme }) => theme.font.size['lg']};
-    color: ${({ theme }) => theme.colors['base-title']};
-    flex-grow: 1;
-    max-width: 70%;
-  }
-`
 
 export function Home() {
   return (
