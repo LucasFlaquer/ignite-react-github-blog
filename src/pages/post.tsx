@@ -1,5 +1,13 @@
+import { PostTitleCard } from './components/post-title-card'
+import { Container, Cover } from './styles'
+
 export function Post() {
   return (
-    <h1>Hi! This is the post pages</h1>
+    <Container>
+      <Cover>
+        <img src="/Logo.svg" alt="Github Blog" />
+      </Cover>
+      <PostTitleCard />
+    </Container>
   )
 }
