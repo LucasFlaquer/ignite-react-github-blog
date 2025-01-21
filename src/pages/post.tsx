@@ -7,7 +7,13 @@ export function Post() {
       <Cover>
         <img src="/Logo.svg" alt="Github Blog" />
       </Cover>
-      <PostTitleCard />
+      <PostTitleCard
+        comments={4}
+        createdAt={new Date('2025-01-12')}
+        githubUrl="http://github.com/lucaslfauqer"
+        title="Javascript titulo aqui"
+        username="lucasflaquer"
+      />
     </Container>
   )
 }
