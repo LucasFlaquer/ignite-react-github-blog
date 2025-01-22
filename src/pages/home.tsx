@@ -36,7 +36,7 @@ export function Home() {
       <SearchForm />
       <PostWrapper>
         {posts.map(post => (
-          <Post key={post.id}>
+          <Post key={post.id} to={`/posts/${post.id}`}>
             <PostHeader>
               <h2>{post.title}</h2>
               <span>{formatDistanceToNow(post.created_at, {

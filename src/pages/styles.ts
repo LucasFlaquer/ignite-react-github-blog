@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -27,10 +28,13 @@ export const PostWrapper = styled.div`
   gap: 2rem;
 `
 
-export const Post = styled.div`
+export const Post = styled(Link)`
   padding: 2rem;
   border-radius: 0.5rem;
   background-color: ${({ theme }) => theme.colors['base-post']};
+  cursor: pointer;
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors['base-text']};
 
   >.content {
     max-width: 352px;
