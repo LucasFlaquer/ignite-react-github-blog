@@ -13,13 +13,14 @@ interface IPost {
   id: number
   body: string
   created_at: string
+  number: number
 
 }
 
 export function Home() {
   const [posts, setPosts] = useState<IPost[]>([])
   async function fetchPosts() {
-    const response = await axios.get(`${import.meta.env.VITE_GITHUB_SEARCH_URL}/issues?q=Boas%20praticas%20repo:rocketseat-education/reactjs-github-blog-challenge`)
+    const response = await axios.get(`${import.meta.env.VITE_GITHUB_SEARCH_URL}/search/issues?q=Boas%20praticas%20repo:rocketseat-education/reactjs-github-blog-challenge`)
     setPosts(response.data.items)
   }
 
@@ -36,7 +37,7 @@ export function Home() {
       <SearchForm />
       <PostWrapper>
         {posts.map(post => (
-          <Post key={post.id} to={`/posts/${post.id}`}>
+          <Post key={post.id} to={`/posts/${post.number}`}>
             <PostHeader>
               <h2>{post.title}</h2>
               <span>{formatDistanceToNow(post.created_at, {
